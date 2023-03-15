@@ -1,7 +1,7 @@
 class Solution {
     public int numberOfSteps(int num) {
         int stepsToZero = 0;
-
+/*
         // 1ST APPROACH
          
         while(num > 0){
@@ -15,5 +15,24 @@ class Solution {
            
         }
         return stepsToZero;
+        
+        
+*/
+        // 2ND APPROACH   (BIT MANIPULATION)
+
+        while(num > 0){
+            if ((num & 1) == 0){
+                num >>= 1;
+            } else {
+              num--;
+            }    
+            stepsToZero++;        
+        }
+        
+        return stepsToZero;
+    
+*/
+
+
    }
 }   
