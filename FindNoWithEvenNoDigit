@@ -1,0 +1,14 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+       
+        List<String> str = new ArrayList<>();
+        
+        for(int num : nums){
+            if(String.valueOf(num).length() % 2 == 0){
+                str.add(String.valueOf(num));
+            }
+        }
+        return str.size();
+    }
+        
+}
