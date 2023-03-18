@@ -1,0 +1,19 @@
+class Solution {
+    public int vowelStrings(String[] words, int left, int right) {
+        int count = 0 ;
+
+        HashSet<Character> ch = new HashSet<>();
+        ch.add('a'); ch.add('e'); ch.add('i'); ch.add('o'); ch.add('u');
+
+        for(int i = left; i <= right; i++){
+            String str = words[i];
+            char ch1 = str.charAt(0);
+            char ch2 = str.charAt(str.length()-1);
+
+            if(ch.contains(ch1) && ch.contains(ch2)){
+                count++;
+            }
+        }
+        return count;
+    }
+}
