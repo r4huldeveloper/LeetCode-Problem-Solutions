@@ -1,0 +1,16 @@
+class Solution {
+    public int[] sumZero(int n) {
+      int[] result = new int[n];
+      int temp = n/2;
+      int start = 0;
+      int end = n - 1;
+      while(start < end){
+          result[start] = temp;
+          result[end] = -temp;
+          start++;
+          temp--;
+          end--;
+      }
+      return result;
+    }
+}
