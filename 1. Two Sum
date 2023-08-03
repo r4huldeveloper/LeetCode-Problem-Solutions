@@ -12,6 +12,7 @@ class Solution {
         return null;
     }
 }
+-------------------------------------------
 
 // EFFICIENT APPROACH (HASH TABLE)
 
@@ -29,5 +30,26 @@ class Solution {
          }
      }
      return null;
+    }
+}
+
+-------------------------------------
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> map = new HashMap();
+        for(int i = 0; i < nums.length; i++){
+            map.put(nums[i],i);
+        }
+        for(int i = 0; i < nums.length; i++){
+            int num = nums[i];  // num = 2;
+            int rem = target - num;
+            if(map.containsKey(rem) ){
+                int index = map.get(rem);
+                if(index == i) continue;
+                return new int[]{i,index};
+            }
+        }
+        return null;
     }
 }
