@@ -24,7 +24,7 @@ class Solution {
      }
      for(int i = 0 ; i < nums.length; i++){
          int left = target - nums[i];
-         if(map.containsKey(left) && map.get(left) != i){  // map.get(left) gives the key of left
+         if(map.containsKey(left) && map.get(left) != i){  // map.get(left) gives the value of left
              return new int[]{i,map.get(left) };
          }
      }
