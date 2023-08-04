@@ -1,0 +1,19 @@
+// Time complexity O(m*n)
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int[][] result = new int[r][c];
+        int m = mat.length;
+        int n = mat[0].length;
+        if(m*n != r*c) return mat;
+        if(r == m && c == n) {return mat;}
+
+        int new_index = 0;
+        int old_index = 0;
+        while(new_index < r*c && old_index < m*n){
+        result[new_index/c][new_index%c] = mat[old_index/n][old_index%n];    
+        new_index++;
+        old_index++;
+        }
+    return result;
+    }
+}
