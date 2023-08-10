@@ -1,3 +1,5 @@
+// Time complexity is O(n^2) and Space is O(1)
+
 class Solution {
 public void duplicateZeros(int[] arr) {
     for(int i=0;i<arr.length;i++){
@@ -11,4 +13,29 @@ public void duplicateZeros(int[] arr) {
          
      }
   }
+}
+
+------------------------------------------------------
+// Time complexity O(n) Space is O(1)
+
+class Solution {
+    public void duplicateZeros(int[] arr) {
+        int noOfZero = 0;
+        for(int i : arr){
+          if(i == 0) noOfZero++;
+
+        }
+
+        int i = arr.length - 1, j = arr.length + noOfZero - 1;
+
+        while(i != j){
+          insert(arr,i,j--);
+          if(arr[i] == 0) insert(arr,i,j--);
+        i--;
+        } 
+    }
+    private void insert(int[] arr, int i , int j){
+      if(j < arr.length)
+        arr[j] = arr[i];
+    }
 }
