@@ -1,0 +1,32 @@
+// Time complexity is O(n) and Space is O(n)
+
+class Solution {
+    public int findMaxValueOfEquation(int[][] points, int k) {
+        Deque<int[]> deque = new ArrayDeque<>();
+        int maxValue = Integer.MIN_VALUE;
+        
+        for(int[] point : points){
+            // Remove the points that are not within the range |xi - xj| <= k
+            while(!deque.isEmpty() && point[0] - deque.peekFirst()[0] > k){
+                deque.pollFirst();
+            }
+
+            if(!deque.isEmpty()){
+                // calculate the equation value yi + yj + |xi-xj|
+                int equationValue = point[1] + deque.peekFirst()[1] + point[0] - deque.peekFirst()[0];
+                // update the maxValue if the current equation value is greater
+                maxValue = Math.max(maxValue, equationValue);
+            }
+
+            // Remove points that won't contribute to a higher equation value
+            while(!deque.isEmpty() && point[1] - point[0] > deque.peekLast()[1] - deque.peekLast()[0]){
+            deque.pollLast();
+            }
+                    // add the current point to the deque
+        deque.offerLast(point);
+        }
+        // return the maximum equation value
+        return maxValue;
+    }
+
+}
