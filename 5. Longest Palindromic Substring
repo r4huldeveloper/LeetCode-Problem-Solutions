@@ -1,0 +1,64 @@
+// Time complexity O(N^2)
+// Space is O(1)
+
+class Solution {
+
+    public String expandFromMiddle(String s, int left, int right){
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
+        }
+        return s.substring(left + 1, right);
+    }
+    public String longestPalindrome(String s) {
+        if(s == null && s.length() == 0) return "";
+
+        String longest="";
+        for(int i = 0; i < s.length(); i++){
+            String oddPalindrome = expandFromMiddle(s, i, i);
+            String evenPalindrome = expandFromMiddle(s, i, i+1);
+
+            if(oddPalindrome.length() > longest.length()){
+                longest = oddPalindrome;
+            }
+            if(evenPalindrome.length() > longest.length()){
+                longest = evenPalindrome;
+            }
+        }
+        return longest;
+    }
+}
+
+
+
+----------------------------------------------------------------
+// Brute Force 
+// Time complexity O(n^2 * m) 'm' for isPalindrome check
+// Space is O(1)
+---------------------
+class Solution {
+    public boolean isPalindrome(String str){
+        int left = 0;
+        int right = str.length() - 1;
+        while(left < right){
+            if(str.charAt(left) != str.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+    public String longestPalindrome(String s) {
+        String longest = "";
+        for(int i = 0; i < s.length(); i++){
+            for(int j = i; j < s.length(); j++){
+                String subString = s.substring(i, j+1);
+                if(isPalindrome(subString) && subString.length() > longest.length()){
+                    longest = subString;
+                }
+            }
+        }
+        return longest;
+    }
+}
